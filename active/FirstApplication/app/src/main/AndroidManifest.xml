@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="android.cms.ehsure.firstapplication">
 
     <application
@@ -18,7 +19,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SecondActivity"></activity>
+        <activity android:name=".SecondActivity" />
+        <activity android:name=".StealthActivity">
+            <intent-filter>
+                <action android:name="android.cms.ehsure.firstapplication.ACTION_START" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.cms.ehsure.firstapplication.MY_CATEGORY" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ThridActivity">
+            <intent-filter tools:ignore="AppLinkUrlError">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="http" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ResultActivity"></activity>
     </application>
 
 </manifest>

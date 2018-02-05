@@ -18,5 +18,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Activity Test" />
+    <Button
+        android:id="@+id/btn_steatchActive"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="隐式Intent Test" />
+
+    <Button
+        android:id="@+id/btn_brower"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="隐式Intent浏览器Test" />
+    <Button
+        android:id="@+id/btn_datapush"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Intent Data Push" />
 
 </LinearLayout>

@@ -1,6 +1,8 @@
 package android.cms.ehsure.firstapplication;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,6 +15,9 @@ public class FirstActivity extends AppCompatActivity {
 private Button btnTotast;
 private Button btnClose;
 private Button btnShowActivity;
+private Button btnsteaactivity;
+private Button btnBrower;
+private Button btnDataPush;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -40,6 +45,36 @@ private Button btnShowActivity;
                 Toast.makeText(FirstActivity.this,"This is Toast",Toast.LENGTH_LONG).show();
             }
         });
+        btnsteaactivity=(Button)findViewById(R.id.btn_steatchActive);
+        btnsteaactivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent("android.cms.ehsure.firstapplication.ACTION_START");
+                intent.addCategory("android.cms.ehsure.firstapplication.MY_CATEGORY");
+                startActivity(intent);
+            }
+        });
+        btnBrower=findViewById(R.id.btn_brower);
+        btnBrower.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentBrower=new Intent(Intent.ACTION_VIEW);
+                intentBrower.setData(Uri.parse("http://www.baidu.com"));
+                startActivity(intentBrower);
+                /*Intent intentTel=new Intent(Intent.ACTION_DIAL);
+                intentTel.setData(Uri.parse("tel:18521039557"));
+                startActivity(intentTel);*/
+            }
+        });
+
+        btnDataPush=findViewById(R.id.btn_datapush);
+        btnDataPush.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentdatapush=new Intent(FirstActivity.this,ResultActivity.class);
+                startActivityForResult(intentdatapush,1);
+            }
+        });
     }
 
     @Override
@@ -61,5 +96,18 @@ private Button btnShowActivity;
             default:
         }
         return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+       switch (requestCode)
+       {
+           case 1:
+               if (resultCode==RESULT_OK)
+               {
+                   String returnData=data.getStringExtra("data_return");
+                   Toast.makeText(this,returnData,Toast.LENGTH_LONG).show();
+               }
+       }
     }
 }
