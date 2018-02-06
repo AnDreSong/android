@@ -1,8 +1,7 @@
 package android.cms.ehsure.firstapplication;
-
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.print.PrintManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,14 +9,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
-public class FirstActivity extends AppCompatActivity {
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.Socket;
+public class FirstActivity extends AppCompatActivity  {
 private Button btnTotast;
 private Button btnClose;
 private Button btnShowActivity;
 private Button btnsteaactivity;
 private Button btnBrower;
 private Button btnDataPush;
+private Button btnConnectPrinter;
+    Socket client;
+    PrintManager printManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -75,14 +79,16 @@ private Button btnDataPush;
                 startActivityForResult(intentdatapush,1);
             }
         });
-    }
+        btnConnectPrinter=findViewById(R.id.btn_connectPrinter);
 
+        btnConnectPrinter.setOnClickListener(new ButtonClickListener(this));
+
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main,menu);
         return true;
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId())
@@ -97,7 +103,6 @@ private Button btnDataPush;
         }
         return true;
     }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
        switch (requestCode)
@@ -110,4 +115,31 @@ private Button btnDataPush;
                }
        }
     }
+    public void SendMsg(final String msg)
+    {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                if (client!=null&&client.isConnected())
+                {
+                    OutputStream os;
+                    try {
+                        os = client.getOutputStream();
+                        os.write(msg.getBytes("UTF-8"));
+                        os.flush();
+
+                    } catch (IOException e) {
+
+                        e.printStackTrace();
+                    }
+
+                }
+                else {
+
+                }
+            }
+        }) .start();
+    }
+
+
 }

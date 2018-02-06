@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout   xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textview"
+        android:text="This is TextView"
+        android:gravity="center"
+        android:textSize="24sp"
+        android:textColor="#ff00"
+        />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        android:textAllCaps="false"
+        android:background="#11ff00"
+        />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:textSize="20sp"
+        android:inputType="textPersonName"
+        android:gravity="center"
+        android:hint="Type something here"
+        android:maxLines="2"
+        android:text="" />
+
+    <ImageView
+        android:id="@+id/imageshow"
+        android:layout_width="match_parent"
+        android:layout_height="106dp"
+        android:src="@mipmap/dog"
+
+        />
+
+    <ProgressBar
+        android:id="@+id/processbar"
+        android:layout_width="match_parent"
+        android:layout_height="93dp" />
+
+    <Button
+        android:id="@+id/btn_alertDialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:text="AlertDialog" />
+    <Button
+        android:id="@+id/btn_processDialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:text="AlertDialog" />
+
+</LinearLayout>

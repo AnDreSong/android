@@ -35,4 +35,11 @@
         android:layout_height="wrap_content"
         android:text="Intent Data Push" />
 
+    <Button
+        android:id="@+id/btn_connectPrinter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="连接打印机" />
+
+
 </LinearLayout>
